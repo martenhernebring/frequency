@@ -1,22 +1,34 @@
 package se.hernebring.frequency.engine;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 public class LetterFrequency {
     public static String count(String text) {
-        StringBuilder sb = new StringBuilder();
-        char previous = 0;
+        Set<Character> unique = new LinkedHashSet<>();
+        Set<Character> occurringTwice = new LinkedHashSet<>();
         for(int i = 0; i < text.length(); i++) {
-            char letterOrPunctuation = text.charAt(i);
-            if(Character.isLetter(letterOrPunctuation)) {
-                if(letterOrPunctuation == previous) {
-                    sb.replace(sb.length() - 3, sb.length() - 2, "2");
+            char character = text.charAt(i);
+            if(Character.isLetter(character)) {
+                if(unique.contains(character)) {
+                    occurringTwice.add(character);
+                    unique.remove(character);
                 } else {
-                    sb.append(letterOrPunctuation);
-                    sb.append(",1");
-                    sb.append(System.lineSeparator());
+                    unique.add(character);
                 }
-                previous = letterOrPunctuation;
             }
         }
+        StringBuilder sb = new StringBuilder();
+        occurringTwice.forEach(letter -> {
+            sb.append(letter);
+            sb.append(",2");
+            sb.append(System.lineSeparator());
+        });
+        unique.forEach(letter -> {
+            sb.append(letter);
+            sb.append(",1");
+            sb.append(System.lineSeparator());
+        });
         return sb.toString();
     }
 }

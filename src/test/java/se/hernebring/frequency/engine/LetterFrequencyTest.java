@@ -50,4 +50,20 @@ public class LetterFrequencyTest {
         String result = "性,2" + System.lineSeparator();
         assertEquals(result, LetterFrequency.count(repeatedLetter));
     }
+
+    @Test
+    void countAllLettersAndReturnCountInOrderOfHighestCountAndFirstOccurring() {
+        String threeCharacterFirstLine = "人之初，性本善。性相近，習相遠。";
+        String result = "性,2" + System.lineSeparator() +
+                "相,2" + System.lineSeparator() +
+                "人,1" + System.lineSeparator() +
+                "之,1" + System.lineSeparator() +
+                "初,1" + System.lineSeparator() +
+                "本,1" + System.lineSeparator() +
+                "善,1" + System.lineSeparator() +
+                "近,1" + System.lineSeparator() +
+                "習,1" + System.lineSeparator() +
+                "遠,1" + System.lineSeparator();
+        assertEquals(result, LetterFrequency.count(threeCharacterFirstLine));
+    }
 }
