@@ -4,6 +4,11 @@ import java.util.*;
 
 public class LetterFrequency {
     public static String count(String text) {
+        Map<Character, Integer> letterFrequency = mapAllCharactersByFrequency(text);
+        return createCsvSortedByValueAndOrderDescending(letterFrequency);
+    }
+
+    private static Map<Character, Integer> mapAllCharactersByFrequency(String text) {
         Map<Character, Integer> letterFrequency = new LinkedHashMap<>();
         for(int i = 0; i < text.length(); i++) {
             char character = text.charAt(i);
@@ -16,15 +21,19 @@ public class LetterFrequency {
                 }
             }
         }
+        return letterFrequency;
+    }
+
+    private static String createCsvSortedByValueAndOrderDescending(Map<Character, Integer> letterFrequency) {
         StringBuilder sb = new StringBuilder();
         letterFrequency.entrySet().stream()
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
                 .forEach(entry -> {
-            sb.append(entry.getKey());
-            sb.append(",");
-            sb.append(entry.getValue());
-            sb.append(System.lineSeparator());
-        });
+                    sb.append(entry.getKey());
+                    sb.append(",");
+                    sb.append(entry.getValue());
+                    sb.append(System.lineSeparator());
+                });
         return sb.toString();
     }
 }

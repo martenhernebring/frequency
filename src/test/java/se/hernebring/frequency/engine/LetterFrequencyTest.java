@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LetterFrequencyTest {
 
+    private String threeCharacterFirstLine = "人之初，性本善。性相近，習相遠。";
+
     @Test
     void noTextReturnsEmptyString() {
         String noText = "";
@@ -16,14 +18,14 @@ public class LetterFrequencyTest {
 
     @Test
     void oneLetterReturnsLetterAndOne() {
-        String single = "人";
+        String single = String.valueOf(threeCharacterFirstLine.charAt(0));
         assertEquals(1, single.length());
         assertEquals("人,1" + System.lineSeparator(), LetterFrequency.count(single));
     }
 
     @Test
     void twoDifferentLettersReturnsTwoRowsWithLetterAndOne() {
-        String tuple = "人之";
+        String tuple = threeCharacterFirstLine.substring(0, 2);
         assertEquals(2, tuple.length());
         StringBuilder sb = new StringBuilder("人,1");
         sb.append(System.lineSeparator());
@@ -34,7 +36,7 @@ public class LetterFrequencyTest {
 
     @Test
     void punctuationShouldNotBeCounted() {
-        String sentence = "人之初，性本善。";
+        String sentence = threeCharacterFirstLine.substring(0, 8);
         String result = "人,1" + System.lineSeparator() +
                     "之,1" + System.lineSeparator() +
                     "初,1" + System.lineSeparator() +
@@ -53,7 +55,6 @@ public class LetterFrequencyTest {
 
     @Test
     void countAllLettersAndReturnCountInOrderOfHighestCountAndFirstOccurring() {
-        String threeCharacterFirstLine = "人之初，性本善。性相近，習相遠。";
         String result = "性,2" + System.lineSeparator() +
                 "相,2" + System.lineSeparator() +
                 "人,1" + System.lineSeparator() +
@@ -69,7 +70,6 @@ public class LetterFrequencyTest {
 
     @Test
     void countFrequenciesFromAtLeastThreeTimes() {
-        String threeCharacterFirstLine = "人之初，性本善。性相近，習相遠。";
         String threeCharacterSecondLine = "苟不教，性乃遷。教之道，貴以專。";
         String result = "性,3" + System.lineSeparator() +
                 "之,2" + System.lineSeparator() +
