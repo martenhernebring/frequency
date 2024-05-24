@@ -92,4 +92,15 @@ public class LetterFrequencyTest {
                 "專,1" + System.lineSeparator();
         assertEquals(result, LetterFrequency.count(threeCharacterFirstLine + threeCharacterSecondLine));
     }
+
+    /*
+    @Test
+    void tempFullText() throws IOException {
+        FileInputStream fis = new FileInputStream("src/test/resources/stringtoolong.txt");
+        String stringTooLong = IOUtils.toString(fis, "UTF-8");
+        String result = LetterFrequency.count(stringTooLong);
+        //System.out.println(result);
+        File.print(result, "character_frequency");
+    }
+    */
 }
