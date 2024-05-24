@@ -9,7 +9,7 @@ public class LetterFrequency {
         Set<Character> occurringTwice = new LinkedHashSet<>();
         for(int i = 0; i < text.length(); i++) {
             char character = text.charAt(i);
-            if(Character.isLetter(character)) {
+            if(Character.isLetter(character) && !occurringTwice.contains(character)) {
                 if(unique.contains(character)) {
                     occurringTwice.add(character);
                     unique.remove(character);

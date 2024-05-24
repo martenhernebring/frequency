@@ -66,4 +66,30 @@ public class LetterFrequencyTest {
                 "遠,1" + System.lineSeparator();
         assertEquals(result, LetterFrequency.count(threeCharacterFirstLine));
     }
+
+    @Test
+    void countFrequenciesFromAtLeastThreeTimes() {
+        String threeCharacterFirstLine = "人之初，性本善。性相近，習相遠。";
+        String threeCharacterSecondLine = "苟不教，性乃遷。教之道，貴以專。";
+        String result = "性,3" + System.lineSeparator() +
+                "之,2" + System.lineSeparator() +
+                "相,2" + System.lineSeparator() +
+                "教,2" + System.lineSeparator() +
+                "人,1" + System.lineSeparator() +
+                "初,1" + System.lineSeparator() +
+                "本,1" + System.lineSeparator() +
+                "善,1" + System.lineSeparator() +
+                "近,1" + System.lineSeparator() +
+                "習,1" + System.lineSeparator() +
+                "遠,1" + System.lineSeparator() +
+                "苟,1" + System.lineSeparator() +
+                "不,1" + System.lineSeparator() +
+                "乃,1" + System.lineSeparator() +
+                "遷,1" + System.lineSeparator() +
+                "道,1" + System.lineSeparator() +
+                "貴,1" + System.lineSeparator() +
+                "以,1" + System.lineSeparator() +
+                "專,1" + System.lineSeparator();
+        assertEquals(result, LetterFrequency.count(threeCharacterFirstLine + threeCharacterSecondLine));
+    }
 }
